@@ -1,6 +1,7 @@
 /******************************************
 Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
+Samir Salem
 ******************************************/
 
 // For assistance: 
@@ -11,7 +12,6 @@ project 1 - A Random Quote Generator
  * `quotes` array 
 ***/
 const quotes = [
-
   {
     "quote": "The Best Way To Get Started Is To Quit Talking And Begin Doing.",
     "source": "Walt Disney"
@@ -30,15 +30,11 @@ const quotes = [
   },
   {
     "quote": "The ultimate measure of a man is not where he stands in moments of comfort and convenience, but where he stands at times of challenge and controversy",
-    "source": "Martin Luther King Jr.",
+    "source": "Martin Luther King Jr",
     "citation": "Strength to Love", 
     "year": "1963"
   },
 ];
-
-
-
-
 
 /***
  * `getRandomQuote` function
@@ -46,10 +42,10 @@ const quotes = [
 function getRandomQuote() {
 
   let randomNumber = Math.floor((Math.random() * quotes.length));
+  
+  //returns random quote
   return quotes[randomNumber];
 }
-
-
 
 /***
  * `printQuote` function
@@ -57,23 +53,36 @@ function getRandomQuote() {
 
 function printQuote(){
 
-  let RadQuote = getRandomQuote();
-  let htmlString = `<p class="quote">${RadQuote.quote}</p>;`
-  htmlString += `<p class="source">${RadQuote.source};`
-  if(RadQuote.citation != null){
+  let radQuote = getRandomQuote(); //get random quote
 
-    htmlString += `<span class='citation'>${RadQuote.citation}</span>`;
+  //html string to display quote
+  let htmlString = `<p class="quote">${radQuote.quote}</p>`
+  htmlString += `<p class="source">${radQuote.source}`
+
+  //if citation property is present in the object
+  if(radQuote.citation != null){
+
+    //concat to the html String
+    htmlString += `<span class='citation'>${radQuote.citation}</span>`;
   }
-  if(RadQuote.year != null){
 
-    htmlString +=  `<span class='year'>${RadQuote.year}</span>`;
+  //if year property is present
+  if(radQuote.year != null){
+
+    //concat to the html String
+    htmlString +=  `<span class='year'>${radQuote.year}</span>`;
 
   }
+  //end html string
   htmlString += `</p>`;
 
+  //uodates html with random quote 
   return document.getElementById('quote-box').innerHTML = htmlString;
 }
-document.getElementById('quote-box').innerHTML = printQuote();
+
+//calls the function to display the random quote
+printQuote();
+
 
 /***
  * click event listener for the print quote button
