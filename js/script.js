@@ -45,7 +45,7 @@ const quotes = [
 ***/
 function getRandomQuote() {
 
-  let randomNumber = Math.floor(Math.random() * quotes.length + 1);
+  let randomNumber = Math.floor((Math.random() * quotes.length));
   return quotes[randomNumber];
 }
 
@@ -58,22 +58,22 @@ function getRandomQuote() {
 function printQuote(){
 
   let RadQuote = getRandomQuote();
-  let htmlString = "<p class='quote'>RadQuote.quote</p><p class='source'>RadQuote.source";
+  let htmlString = `<p class="quote">${RadQuote.quote}</p>;`
+  htmlString += `<p class="source">${RadQuote.source};`
   if(RadQuote.citation != null){
 
-    htmlString += "<span class='citation'>RadQuote.citation</span>";
+    htmlString += `<span class='citation'>${RadQuote.citation}</span>`;
   }
   if(RadQuote.year != null){
 
-    htmlString +=  "<span class='year'>RadQuote.year</span>";
+    htmlString +=  `<span class='year'>${RadQuote.year}</span>`;
 
   }
-  htmlString += "</p>";
+  htmlString += `</p>`;
 
-  return htmlString;
+  return document.getElementById('quote-box').innerHTML = htmlString;
 }
-
-document.querySelector('quote-box').innerHTML = htmlString;
+document.getElementById('quote-box').innerHTML = printQuote();
 
 /***
  * click event listener for the print quote button
